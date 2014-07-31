@@ -1,0 +1,37 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="10dp" >
+    
+    <TextView 
+        android:id="@+id/day_list_item_happyLevel"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:focusable="false"
+        android:padding="4dp"
+        android:textSize="30sp"
+        android:text="10.0" />
+    
+    <TextView
+        android:id="@+id/day_list_item_titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/day_list_item_happyLevel"
+        android:textStyle="bold"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:textSize="20sp"
+        android:text="Title" />
+    
+    <TextView
+        android:id="@+id/day_list_item_numEntriesTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/day_list_item_titleTextView"
+        android:layout_toLeftOf="@id/day_list_item_happyLevel"
+        android:padding="4dp"
+        android:paddingBottom="0dp"
+        android:text="10 entries" />
+</RelativeLayout>

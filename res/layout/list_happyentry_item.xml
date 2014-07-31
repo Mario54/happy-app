@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@drawable/background_activated" >
+    
+    <TextView 
+        android:id="@+id/happyinput_list_item_happyLevel"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_alignParentRight="true"
+        android:focusable="false"
+        android:padding="4dp"
+        android:textSize="30sp"
+        android:text="10.0" />
+    
+    <TextView
+        android:id="@+id/happyinput_list_item_titleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/happyinput_list_item_happyLevel"
+        android:textStyle="bold"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="Title" />
+    
+    <TextView
+        android:id="@+id/happyinput_list_item_tagsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/happyinput_list_item_titleTextView"
+        android:layout_toLeftOf="@id/happyinput_list_item_happyLevel"
+        android:padding="4dp"
+        android:paddingBottom="0dp"
+        android:maxLength="30"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="tags,tags,tags" />
+    
+
+</RelativeLayout>
