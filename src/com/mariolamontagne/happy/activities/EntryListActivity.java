@@ -1,7 +1,8 @@
-package com.mariolamontagne.happy;
+package com.mariolamontagne.happy.activities;
 
 import java.util.Date;
 
+import com.mariolamontagne.happy.AlarmService;
 import com.mariolamontagne.happy.fragments.EntryListFragment;
 import com.mariolamontagne.happy.fragments.SingleFragmentActivity;
 

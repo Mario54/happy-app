@@ -2,7 +2,8 @@ package com.mariolamontagne.happy;
 
 import java.util.Date;
 
-import com.mariolamontagne.happy.Utilities.AlarmUtility;
+import com.mariolamontagne.happy.activities.EditHappyEntryActivity;
+import com.mariolamontagne.happy.utilities.AlarmUtility;
 
 import android.app.AlarmManager;
 import android.app.Notification;

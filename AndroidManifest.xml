@@ -24,14 +24,14 @@
         </receiver>
 
         <activity
-            android:name=".EntryListActivity"
+            android:name="com.mariolamontagne.happy.activities.EntryListActivity"
             android:label="@string/app_name" >
         </activity>
-        <activity android:name=".EditHappyEntryActivity" >
+        <activity android:name="com.mariolamontagne.happy.activities.EditHappyEntryActivity" >
         </activity>
-        <activity android:name=".CalendarActivity" >
+        <activity android:name="com.mariolamontagne.happy.activities.CalendarActivity" >
         </activity>
-        <activity android:name=".DayListActivity" >
+        <activity android:name="com.mariolamontagne.happy.activities.DayListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -39,7 +39,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GraphActivity"
+            android:name="com.mariolamontagne.happy.activities.GraphActivity"
             android:label="@string/title_activity_graph" >
             
         </activity>

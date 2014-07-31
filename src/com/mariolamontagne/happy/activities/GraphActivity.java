@@ -1,4 +1,4 @@
-package com.mariolamontagne.happy;
+package com.mariolamontagne.happy.activities;
 
 import android.app.Fragment;
 

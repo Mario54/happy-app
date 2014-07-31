@@ -14,14 +14,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.mariolamontagne.happy.EditHappyEntryActivity;
-import com.mariolamontagne.happy.EntryListActivity;
-import com.mariolamontagne.happy.GraphActivity;
 import com.mariolamontagne.happy.R;
-import com.mariolamontagne.happy.Utilities.DateUtility;
+import com.mariolamontagne.happy.activities.EditHappyEntryActivity;
+import com.mariolamontagne.happy.activities.EntryListActivity;
+import com.mariolamontagne.happy.activities.GraphActivity;
 import com.mariolamontagne.happy.model.Day;
 import com.mariolamontagne.happy.model.HappyEntry;
 import com.mariolamontagne.happy.model.HappyEntryLab;
+import com.mariolamontagne.happy.utilities.DateUtility;
 
 public class DateListFragment extends ListFragment {
 

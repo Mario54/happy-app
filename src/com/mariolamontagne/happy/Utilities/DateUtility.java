@@ -1,4 +1,4 @@
-package com.mariolamontagne.happy.Utilities;
+package com.mariolamontagne.happy.utilities;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

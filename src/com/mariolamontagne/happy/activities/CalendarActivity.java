@@ -1,5 +1,8 @@
-package com.mariolamontagne.happy;
+package com.mariolamontagne.happy.activities;
 
+import com.mariolamontagne.happy.R;
+import com.mariolamontagne.happy.R.id;
+import com.mariolamontagne.happy.R.layout;
 import com.mariolamontagne.happy.fragments.EntryListFragment;
 
 import android.app.Fragment;

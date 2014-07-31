@@ -1,4 +1,4 @@
-package com.mariolamontagne.happy.Utilities;
+package com.mariolamontagne.happy.utilities;
 
 import java.util.ArrayList;
 import java.util.Calendar;

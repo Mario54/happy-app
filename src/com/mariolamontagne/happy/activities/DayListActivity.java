@@ -1,4 +1,4 @@
-package com.mariolamontagne.happy;
+package com.mariolamontagne.happy.activities;
 
 import com.mariolamontagne.happy.fragments.DateListFragment;
 import com.mariolamontagne.happy.fragments.SingleFragmentActivity;
