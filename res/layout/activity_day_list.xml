@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <Button
+            android:id="@+id/previousMonthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/previous_month" />
+        
+        <TextView 
+            android:id="@+id/monthTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="June 2014"
+            android:textSize="25sp"
+            android:gravity="center"/>
+        
+        <Button
+            android:id="@+id/nextMonthButton"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/next_month" />
+        
+        
+        
+    </LinearLayout>
+    
+    <FrameLayout android:id="@+id/listContainer"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            
+        </FrameLayout>
+    
+
+</LinearLayout>

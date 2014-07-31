@@ -1,16 +1,28 @@
 package com.mariolamontagne.happy.activities;
 
-import com.mariolamontagne.happy.fragments.DateListFragment;
-import com.mariolamontagne.happy.fragments.SingleFragmentActivity;
-
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 
-public class DayListActivity extends SingleFragmentActivity {
+import com.mariolamontagne.happy.R;
+import com.mariolamontagne.happy.fragments.DateListFragment;
 
+public class DayListActivity extends ActionBarActivity {
+	
 	@Override
-	protected Fragment createFragment() {
-		// TODO Auto-generated method stub
-		return new DateListFragment();
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_day_list);
+		
+		FragmentManager fm = getFragmentManager();
+		
+		Fragment fragment = fm.findFragmentById(R.id.listContainer);
+		
+		if (fragment == null) {
+			fragment = new DateListFragment();
+			fm.beginTransaction().add(R.id.listContainer, fragment).commit();
+		}
 	}
 
 }

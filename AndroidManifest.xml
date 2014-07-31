@@ -28,20 +28,21 @@
             android:label="@string/app_name" >
         </activity>
         <activity android:name="com.mariolamontagne.happy.activities.EditHappyEntryActivity" >
+            
         </activity>
         <activity android:name="com.mariolamontagne.happy.activities.CalendarActivity" >
+            
         </activity>
         <activity android:name="com.mariolamontagne.happy.activities.DayListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>            
         </activity>
         <activity
             android:name="com.mariolamontagne.happy.activities.GraphActivity"
-            android:label="@string/title_activity_graph" >
-            
+            android:label="@string/title_activity_graph" >            
         </activity>
     </application>
 

@@ -9,5 +9,7 @@
     <string name="delete_entry">Delete Entry</string>
     <string name="title_activity_graph">GraphActivity</string>
     <string name="see_stats">See Statistics</string>
+    <string name="previous_month">&lt;&lt;</string>
+    <string name="next_month">&gt;&gt;</string>
 
 </resources>
