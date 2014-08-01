@@ -2,6 +2,7 @@ package com.mariolamontagne.happy.fragments;
 
 import java.util.ArrayList;
 
+import android.app.Fragment;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,49 +25,39 @@ import com.mariolamontagne.happy.model.HappyEntryLab;
 import com.mariolamontagne.happy.utilities.DateUtility;
 
 public class DateListFragment extends ListFragment {
+	
+	public static final String EXTRA_MONTH = "com.mariolamontagne.happy.month";
+	public static final String EXTRA_YEAR = "com.mariolamontagne.happy.year";
+
 
     private ArrayList<Day> mDays;
+    private int mMonth;
+    private int mYear;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        setHasOptionsMenu(true);
+        
+        mYear = getArguments().getInt(EXTRA_YEAR);
+        mMonth = getArguments().getInt(EXTRA_MONTH);
 
-        mDays = HappyEntryLab.get(getActivity()).getDaysWithEntries();
+        mDays = HappyEntryLab.get(getActivity()).getDaysFromMonth(mYear, mMonth);
 
         DateListAdapter adapter = new DateListAdapter(mDays);
         setListAdapter(adapter);
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_date_list, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_item_new_entry) {
-            HappyEntry entry = new HappyEntry();
-            Intent i = new Intent(getActivity(), EditHappyEntryActivity.class);
-            HappyEntryLab.get(getActivity()).addEntry(entry);
-            i.putExtra(EntryFragment.EXTRA_ENTRY_ID, entry.getId());
-            startActivityForResult(i, 0);
-            return true;
-        } else if (item.getItemId() == R.id.menu_item_see_stats) {
-            Intent i = new Intent(getActivity(), GraphActivity.class);
-            startActivity(i);
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
     public void onResume() {
         super.onResume();
         ((DateListAdapter) getListAdapter()).notifyDataSetChanged();
+    }
+    
+    public void changeMonth(int year, int month) {
+    	mDays.clear();
+    	mDays.addAll(HappyEntryLab.get(getActivity()).getDaysFromMonth(year, month));
+    	((DateListAdapter) getListAdapter()).notifyDataSetChanged();
     }
 
     @Override
@@ -105,4 +96,14 @@ public class DateListFragment extends ListFragment {
             return convertView;
         }
     }
+
+	public static Fragment newInstance(int year, int month) {
+		DateListFragment fragment = new DateListFragment();
+		Bundle args = new Bundle();
+		args.putInt(EXTRA_MONTH, month);
+		args.putInt(EXTRA_YEAR, year);
+		
+		fragment.setArguments(args);
+		return fragment;
+	}
 }

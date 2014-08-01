@@ -115,4 +115,22 @@ public class HappyEntryLab {
     public void deleteEntry(HappyEntry entry) {
         mEntries.remove(entry);
     }
+
+	public ArrayList<Day> getDaysFromMonth(int year, int month) {
+		Calendar cal = Calendar.getInstance();
+		ArrayList<Day> days = new ArrayList<Day>();
+		
+		for (HappyEntry entry : mEntries) {
+			cal.setTime(entry.getTime());
+			
+			if (cal.get(Calendar.MONTH) == month && cal.get(Calendar.YEAR) == year) {
+				Day entryDay = new Day(entry.getTime());
+				if (!days.contains(entryDay)) {
+					days.add(entryDay);
+				}
+			}
+		}
+		
+		return days;
+	}
 }

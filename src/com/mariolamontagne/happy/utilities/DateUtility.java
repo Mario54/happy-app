@@ -16,5 +16,11 @@ public class DateUtility {
 
         return df.format(time);
     }
+    
+    public static String getMonthFormatted(Date time) {
+        SimpleDateFormat df = new SimpleDateFormat("MMMM yyyy", java.util.Locale.getDefault());
+
+        return df.format(time);
+    }
 
 }

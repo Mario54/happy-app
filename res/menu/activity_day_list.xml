@@ -5,7 +5,7 @@
         android:id="@+id/menu_item_new_entry"
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/new_entry"
-        android:showAsAction="ifRoom|withText" />
+        android:showAsAction="always" />
     
     <item 
         android:id="@+id/menu_item_see_stats"
