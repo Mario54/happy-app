@@ -133,4 +133,18 @@ public class HappyEntryLab {
 		
 		return days;
 	}
+	
+	public ArrayList<String> retrieveAllTags() {
+		ArrayList<String> tags = new ArrayList<String>();
+		
+		for (HappyEntry entry : mEntries) {
+			for (String tag : entry.getTags()) {
+				if (!tags.contains(tag)) {
+					tags.add(tag);
+				}
+			}
+		}
+		
+		return tags;
+	}
 }

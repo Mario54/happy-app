@@ -29,6 +29,5 @@ public class EntryListActivity extends SingleFragmentActivity {
         } else {
             return EntryListFragment.newInstance(date);
         }
-
     }
 }

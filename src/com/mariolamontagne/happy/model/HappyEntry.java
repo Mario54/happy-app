@@ -105,4 +105,18 @@ public class HappyEntry implements GraphViewDataInterface {
     public double getY() {
         return mHappiness;
     }
+    
+    public String getTagsList() {
+    	String tagString = "";
+    	int size = mTags.size();
+    	for (int i = 0; i < size; i++) {
+    		if (i == 0) {
+    			tagString += mTags.get(i);
+    		} else {
+    			tagString += ", " + mTags.get(i);
+    		}
+    	}
+    	
+    	return tagString.trim();
+    }
 }

@@ -184,7 +184,7 @@ public class EntryListFragment extends ListFragment {
             happyLevelTextView.setBackgroundColor(getColor(h.getHappiness()));
 
             TextView tagsTextView = (TextView) convertView.findViewById(R.id.happyinput_list_item_tagsTextView);
-            tagsTextView.setText(h.getTags().toString());
+            tagsTextView.setText(h.getTagsList());
 
             return convertView;
         }

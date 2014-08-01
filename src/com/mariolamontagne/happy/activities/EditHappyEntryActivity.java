@@ -23,6 +23,5 @@ public class EditHappyEntryActivity extends SingleFragmentActivity {
 		} else {
 			return EntryFragment.newInstance(entryId);
 		}
-
 	}
 }

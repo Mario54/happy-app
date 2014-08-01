@@ -22,7 +22,7 @@ import com.mariolamontagne.happy.model.HappyEntry;
 import com.mariolamontagne.happy.model.HappyEntryLab;
 import com.mariolamontagne.happy.utilities.DateUtility;
 
-public class DayListActivity extends ActionBarActivity {
+public class DayListActivity extends FragmentActivity {
 	
 	private Button mPrevMonthButton;
 	private Button mNextMonthButton;
@@ -40,7 +40,6 @@ public class DayListActivity extends ActionBarActivity {
 		curYear = Calendar.getInstance().get(Calendar.YEAR);
 		
 		mMonthTextView = (TextView) findViewById(R.id.monthTextView);
-		
 		
 		mPrevMonthButton = (Button) findViewById(R.id.previousMonthButton);
 		mPrevMonthButton.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +101,7 @@ public class DayListActivity extends ActionBarActivity {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, curYear);
 		cal.set(Calendar.MONTH, curMonth);
-		cal.roll(Calendar.MONTH, increment);
+		cal.add(Calendar.MONTH, increment);
 		
 		curMonth = cal.get(Calendar.MONTH);
 		curYear = cal.get(Calendar.YEAR);
