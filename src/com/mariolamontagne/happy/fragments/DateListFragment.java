@@ -1,6 +1,7 @@
 package com.mariolamontagne.happy.fragments;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import android.app.Fragment;
 import android.app.ListFragment;
@@ -45,14 +46,13 @@ public class DateListFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((DateListAdapter) getListAdapter()).notifyDataSetChanged();
+        updateList();
     }
     
     public void changeMonth(int year, int month) {
-    	mDays.clear();
-    	mDays.addAll(HappyEntryLab.get(getActivity()).getDaysFromMonth(year, month));
-    	// TODO sort day list
-    	((DateListAdapter) getListAdapter()).notifyDataSetChanged();
+        mMonth = month;
+        mYear = year;
+        updateList();
     }
 
     @Override
@@ -62,6 +62,14 @@ public class DateListFragment extends ListFragment {
         Intent intent = new Intent(getActivity(), EntryListActivity.class);
         intent.putExtra(EntryListFragment.EXTRA_DAY, day.getDate());
         startActivity(intent);
+    }
+    
+    public void updateList() {
+        mDays.clear();
+        mDays.addAll(HappyEntryLab.get(getActivity()).getDaysFromMonth(mYear, mMonth));
+        Collections.sort(mDays);
+        Collections.reverse(mDays);
+        ((DateListAdapter) getListAdapter()).notifyDataSetChanged();
     }
 
     private class DateListAdapter extends ArrayAdapter<Day> {

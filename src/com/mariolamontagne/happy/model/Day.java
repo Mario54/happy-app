@@ -3,7 +3,7 @@ package com.mariolamontagne.happy.model;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Day {
+public class Day implements Comparable<Day> {
 	private Date mDate;
 
 	public Date getDate() {
@@ -39,4 +39,9 @@ public class Day {
 		// TODO Auto-generated method stub
 		return super.hashCode();
 	}
+
+    @Override
+    public int compareTo(Day day) {
+        return mDate.compareTo(day.getDate());
+    }
 }

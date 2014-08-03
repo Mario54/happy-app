@@ -30,6 +30,8 @@ public class DayListActivity extends FragmentActivity {
 	private int curMonth;
 	private int curYear;
 	
+	private Fragment mFragment;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -59,11 +61,11 @@ public class DayListActivity extends FragmentActivity {
 		});
 		
 		FragmentManager fm = getFragmentManager();
-		Fragment fragment = fm.findFragmentById(R.id.listContainer);
+		mFragment = fm.findFragmentById(R.id.listContainer);
 		
-		if (fragment == null) {
-			fragment = DateListFragment.newInstance(curYear, curMonth);
-			fm.beginTransaction().add(R.id.listContainer, fragment).commit();
+		if (mFragment == null) {
+		    mFragment = DateListFragment.newInstance(curYear, curMonth);
+			fm.beginTransaction().add(R.id.listContainer, mFragment).commit();
 		}
 		
 		getActionBar().show();
@@ -93,6 +95,12 @@ public class DayListActivity extends FragmentActivity {
         } else {
             return super.onOptionsItemSelected(item);
         }
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ((DateListFragment) mFragment).updateList();
     }
     
     private void changeMonth(int increment) {
