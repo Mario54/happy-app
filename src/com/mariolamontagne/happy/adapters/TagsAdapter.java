@@ -30,16 +30,6 @@ public class TagsAdapter extends ArrayAdapter<String> {
 		TextView titleTextView = (TextView) convertView.findViewById(R.id.tag_item_textView);
 		titleTextView.setText(tag);
 		
-		Button deleteButton = (Button) convertView.findViewById(R.id.tag_item_deleteButton);
-		deleteButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				remove(TagsAdapter.this.getItem(position));
-				
-			}
-		});
-		
 		return convertView;
 	}
 

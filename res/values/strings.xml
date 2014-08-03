@@ -7,6 +7,7 @@
     <string name="new_entry">Add Entry</string>
     <string name="entries">entries</string>
     <string name="delete_entry">Delete Entry</string>
+    <string name="delete_tag">Delete Tag</string>
     <string name="title_activity_graph">GraphActivity</string>
     <string name="see_stats">See Statistics</string>
     <string name="previous_month">&lt;&lt;</string>

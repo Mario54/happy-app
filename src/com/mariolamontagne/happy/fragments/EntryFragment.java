@@ -6,11 +6,18 @@ import java.util.UUID;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.view.ActionMode;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AbsListView.MultiChoiceModeListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -47,6 +54,7 @@ public class EntryFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
         mEntry = HappyEntryLab.get(getActivity()).getEntry((UUID) getArguments().getSerializable(EXTRA_ENTRY_ID));
     }
@@ -78,8 +86,6 @@ public class EntryFragment extends Fragment {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekbar) {
-                // TODO Auto-generated method stub
-
             }
 
             @Override
@@ -111,6 +117,52 @@ public class EntryFragment extends Fragment {
         List<String> tagsArray = mEntry.getTags();
         TagsAdapter tagsAdapter = new TagsAdapter(getActivity(), tagsArray);
         mTagsListView.setAdapter(tagsAdapter);
+        mTagsListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        mTagsListView.setMultiChoiceModeListener(new MultiChoiceModeListener() {
+            
+            @Override
+            public boolean onPrepareActionMode(ActionMode arg0, Menu arg1) {
+                // TODO Auto-generated method stub
+                return false;
+            }
+            
+            @Override
+            public void onDestroyActionMode(ActionMode arg0) {
+                // TODO Auto-generated method stub
+                
+            }
+            
+            @Override
+            public boolean onCreateActionMode(ActionMode am, Menu menu) {
+                MenuInflater inflater = am.getMenuInflater();
+                inflater.inflate(R.menu.tags_list_item_context, menu);
+                
+                return true;
+            }
+            
+            @Override
+            public boolean onActionItemClicked(ActionMode am, MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.menu_item_delete_tag) {
+                    TagsAdapter adapter = (TagsAdapter) mTagsListView.getAdapter();
+                    for (int i = adapter.getCount() - 1; i >= 0; i--) {
+                        if (mTagsListView.isItemChecked(i)) {
+                            mEntry.getTags().remove(adapter.getItem(i));
+                        }
+                    }
+                    am.finish();
+                    adapter.notifyDataSetChanged();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            
+            @Override
+            public void onItemCheckedStateChanged(ActionMode arg0, int arg1, long arg2, boolean arg3) {
+                // TODO Auto-generated method stub
+                
+            }
+        });
 
         Button addTagButton = (Button) view.findViewById(R.id.happyentry_addTagButton);
         addTagButton.setOnClickListener(new View.OnClickListener() {
