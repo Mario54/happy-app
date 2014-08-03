@@ -6,32 +6,53 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class AlarmUtility {
+import com.mariolamontagne.happy.model.Reminder;
 
-    public static ArrayList<Date> getAlarmTimes() {
-        // TODO Make this a setting?
-        ArrayList<Date> times = new ArrayList<Date>();
-        times.add(new GregorianCalendar(2014, 02, 22, 9, 0).getTime());
-        times.add(new GregorianCalendar(2014, 02, 22, 13, 0).getTime());
-        times.add(new GregorianCalendar(2014, 02, 22, 15, 0).getTime());
-        times.add(new GregorianCalendar(2014, 02, 22, 17, 0).getTime());
-        times.add(new GregorianCalendar(2014, 02, 22, 19, 0).getTime());
+import android.content.Context;
+
+public class AlarmUtility {
+    
+    private ArrayList<Reminder> mReminders = getAlarmTimes();
+    private Context mContext;
+    private static AlarmUtility sAlarmUtility;
+    
+    private AlarmUtility(Context context) {
+        mContext = context;
+    }
+    
+    public static AlarmUtility get(Context c) {
+        if (sAlarmUtility == null) {
+            sAlarmUtility = new AlarmUtility(c);
+        }
+        
+        return sAlarmUtility;
+    }
+
+    public ArrayList<Reminder> getReminders() {
+        return mReminders;
+    }
+
+    public static ArrayList<Reminder> getAlarmTimes() {
+        ArrayList<Reminder> times = new ArrayList<Reminder>();
+        times.add(new Reminder(9, 0));
+        times.add(new Reminder(13, 0));
+        times.add(new Reminder(15, 0));
+        times.add(new Reminder(17, 0));
+        times.add(new Reminder(19, 0));
 
         return times;
     }
 
-    public static Date getEarliestAlarm() {
-        ArrayList<Date> times = getAlarmTimes();
+    public Date getEarliestAlarm() {
+        ArrayList<Reminder> times = getAlarmTimes();
         ArrayList<Date> todaysAlarms = new ArrayList<Date>();
 
         Calendar alarmCal = Calendar.getInstance();
 
-        for (Date time : times) {
-            alarmCal.setTime(time);
-
+        for (Reminder reminder : times) {
             // Only get the hour and minutes, actual date is irrelevant
-            int alarmHour = alarmCal.get(Calendar.HOUR_OF_DAY);
-            int alarmMinute = alarmCal.get(Calendar.MINUTE);
+            int alarmHour = reminder.getHour();
+            int alarmMinute = reminder.getMinute();
 
             // Get today's date, but change hour and minutes
             Date alarmTime = new Date();
@@ -50,10 +71,8 @@ public class AlarmUtility {
         if (todaysAlarms.size() == 0) {
             Collections.sort(times);
 
-            alarmCal.setTime(times.get(0)); // get earliest alarm
-
-            int alarmHour = alarmCal.get(Calendar.HOUR_OF_DAY);
-            int alarmMinute = alarmCal.get(Calendar.MINUTE);
+            int alarmHour = times.get(0).getHour();
+            int alarmMinute = times.get(0).getMinute();
 
             alarmCal.setTime(new Date());
             alarmCal.add(Calendar.DAY_OF_YEAR, 1);

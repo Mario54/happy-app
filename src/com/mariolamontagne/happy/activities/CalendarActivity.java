@@ -14,7 +14,6 @@ import com.roomorama.caldroid.CaldroidListener;
 
 public class CalendarActivity extends FragmentActivity {
 
-	private boolean undo = false;
 	private CaldroidFragment caldroidFragment;
 
 	@Override
@@ -64,7 +63,7 @@ public class CalendarActivity extends FragmentActivity {
 
 			@Override
 			public void onSelectDate(Date date, View view) {
-				view.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
+				view.setBackgroundColor(getResources().getColor(android.R.color.white));
 			}
 
 			@Override

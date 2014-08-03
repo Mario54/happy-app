@@ -20,29 +20,35 @@
             android:enabled="true"
             android:exported="false" />
 
-        <receiver android:name=".Alarm" >
+        <receiver android:name=".AlarmReceiver" >
         </receiver>
 
         <activity
-            android:name="com.mariolamontagne.happy.activities.EntryListActivity"
+            android:name=".activities.EntryListActivity"
             android:label="@string/app_name" >
         </activity>
-        <activity android:name="com.mariolamontagne.happy.activities.EditHappyEntryActivity" >
-            
+        <activity android:name=".activities.EditHappyEntryActivity" >
         </activity>
-        <activity android:name="com.mariolamontagne.happy.activities.CalendarActivity" >
-            
+        <activity android:name=".activities.CalendarActivity" >
         </activity>
-        <activity android:name="com.mariolamontagne.happy.activities.DayListActivity" >
+        <activity android:name=".activities.DayListActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>          
+            </intent-filter>
         </activity>
         <activity
-            android:name="com.mariolamontagne.happy.activities.GraphActivity"
-            android:label="@string/title_activity_graph" >            
+            android:name=".activities.GraphActivity"
+            android:label="@string/title_activity_graph" >
+        </activity>
+        <activity
+            android:name="com.mariolamontagne.happy.activities.EditRemindersActivity"
+            android:label="@string/title_activity_edit_reminders"
+            android:parentActivityName=".activities.DayListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.mariolamontagne.happy.activities.DayListActivity" />
         </activity>
     </application>
 

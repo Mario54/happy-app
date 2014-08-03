@@ -21,9 +21,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mariolamontagne.happy.R;
-import com.mariolamontagne.happy.R.id;
-import com.mariolamontagne.happy.R.layout;
-import com.mariolamontagne.happy.R.menu;
 import com.mariolamontagne.happy.activities.EditHappyEntryActivity;
 import com.mariolamontagne.happy.model.Day;
 import com.mariolamontagne.happy.model.HappyEntry;

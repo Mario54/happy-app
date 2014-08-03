@@ -1,13 +1,11 @@
 package com.mariolamontagne.happy.fragments;
 
-import com.mariolamontagne.happy.R;
-import com.mariolamontagne.happy.R.id;
-import com.mariolamontagne.happy.R.layout;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+
+import com.mariolamontagne.happy.R;
 
 public abstract class SingleFragmentActivity extends FragmentActivity {
 

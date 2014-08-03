@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="InflateParams" severity="ignore">
+        <ignore path="src/com/mariolamontagne/happy/adapters/TagsAdapter.java" />
+        <ignore path="src/com/mariolamontagne/happy/fragments/DateListFragment.java" />
+        <ignore path="src/com/mariolamontagne/happy/fragments/EntryListFragment.java" />
+    </issue>
+</lint>

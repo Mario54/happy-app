@@ -16,7 +16,7 @@ import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-public class Alarm extends BroadcastReceiver {
+public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -44,16 +44,16 @@ public class Alarm extends BroadcastReceiver {
 
     public void setNextAlarm(Context context) {
         Log.d("", "Service setAlarm()");
-        Date alarm = AlarmUtility.getEarliestAlarm();
+        Date alarm = AlarmUtility.get(context).getEarliestAlarm();
 
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent i = new Intent(context, Alarm.class);
+        Intent i = new Intent(context, AlarmReceiver.class);
         PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
         am.set(AlarmManager.RTC_WAKEUP, alarm.getTime(), pi);
     }
 
     public void cancelAlarm(Context context) {
-        Intent intent = new Intent(context, Alarm.class);
+        Intent intent = new Intent(context, AlarmReceiver.class);
         PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         am.cancel(sender);

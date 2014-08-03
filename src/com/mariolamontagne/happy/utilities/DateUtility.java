@@ -1,6 +1,7 @@
 package com.mariolamontagne.happy.utilities;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtility {
@@ -15,6 +16,15 @@ public class DateUtility {
         SimpleDateFormat df = new SimpleDateFormat("h:mm a", java.util.Locale.getDefault());
 
         return df.format(time);
+    }
+    
+    public static String getTimeFormatted(int hour, int minute) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, hour);
+        c.set(Calendar.MINUTE, minute);
+        SimpleDateFormat df = new SimpleDateFormat("h:mm a", java.util.Locale.getDefault());
+
+        return df.format(c.getTime());
     }
     
     public static String getMonthFormatted(Date time) {

@@ -7,7 +7,6 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -87,8 +86,8 @@ public class DayListActivity extends FragmentActivity {
             i.putExtra(EntryFragment.EXTRA_ENTRY_ID, entry.getId());
             startActivityForResult(i, 0);
             return true;
-        } else if (item.getItemId() == R.id.menu_item_see_stats) {
-            Intent i = new Intent(this, GraphActivity.class);
+        } else if (item.getItemId() == R.id.menu_item_reminders) {
+            Intent i = new Intent(this, EditRemindersActivity.class);
             startActivity(i);
             return true;
         } else {

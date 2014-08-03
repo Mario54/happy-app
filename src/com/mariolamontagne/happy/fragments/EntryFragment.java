@@ -14,15 +14,12 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
 import com.mariolamontagne.happy.R;
-import com.mariolamontagne.happy.R.id;
-import com.mariolamontagne.happy.R.layout;
 import com.mariolamontagne.happy.adapters.TagsAdapter;
 import com.mariolamontagne.happy.model.HappyEntry;
 import com.mariolamontagne.happy.model.HappyEntryLab;
@@ -127,7 +124,8 @@ public class EntryFragment extends Fragment {
         return view;
     }
     
-	private void addTag() {
+	@SuppressWarnings("unchecked")
+    private void addTag() {
 		String tag = mTagsAutoTextView.getText().toString().trim();
         if (!tag.isEmpty() && !mEntry.getTags().contains(tag)) {
             mTagsAutoTextView.setText("");

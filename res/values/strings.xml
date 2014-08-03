@@ -11,5 +11,7 @@
     <string name="see_stats">See Statistics</string>
     <string name="previous_month">&lt;&lt;</string>
     <string name="next_month">&gt;&gt;</string>
+    <string name="title_activity_edit_reminders">Edit Reminders</string>
+    <string name="time_picker_title">Reminder Time</string>
 
 </resources>

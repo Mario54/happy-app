@@ -1,16 +1,11 @@
 package com.mariolamontagne.happy.fragments;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 import android.app.Fragment;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -18,11 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.mariolamontagne.happy.R;
-import com.mariolamontagne.happy.activities.EditHappyEntryActivity;
 import com.mariolamontagne.happy.activities.EntryListActivity;
-import com.mariolamontagne.happy.activities.GraphActivity;
 import com.mariolamontagne.happy.model.Day;
-import com.mariolamontagne.happy.model.HappyEntry;
 import com.mariolamontagne.happy.model.HappyEntryLab;
 import com.mariolamontagne.happy.utilities.DateUtility;
 

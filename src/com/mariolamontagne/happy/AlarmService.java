@@ -7,7 +7,7 @@ import android.util.Log;
 
 public class AlarmService extends Service {
 
-    Alarm alarm = new Alarm();
+    AlarmReceiver alarm = new AlarmReceiver();
 
     public void onCreate() {
         super.onCreate();
