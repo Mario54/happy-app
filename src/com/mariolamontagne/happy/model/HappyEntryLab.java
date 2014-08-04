@@ -3,6 +3,7 @@ package com.mariolamontagne.happy.model;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.UUID;
 
 import android.content.Context;
@@ -146,5 +147,31 @@ public class HappyEntryLab {
 		}
 		
 		return tags;
+	}
+	
+	/*
+	 * checks if there is an entry after or before a the current month of a year
+	 */
+	public boolean isEntry(boolean after, int month, int year) {
+	    Calendar cal = new GregorianCalendar(year, month+1, 1);;
+	     
+	    if (!after) {
+	        cal.add(Calendar.MONTH, -1);
+	        cal.add(Calendar.DAY_OF_MONTH, -1);
+	    }
+	    
+	    for (HappyEntry entry : mEntries) {
+	        if (after) {
+	            if (entry.getTime().after(cal.getTime())) {
+	                return true;
+	            }
+	        } else {
+               if (entry.getTime().before(cal.getTime())) {
+                    return true;
+                }
+	        }
+	    }
+	    
+	    return false;
 	}
 }

@@ -69,6 +69,7 @@ public class DayListActivity extends FragmentActivity {
 		}
 		
 		getActionBar().show();
+		resetButtons();
 	}
 	
     @Override
@@ -115,5 +116,20 @@ public class DayListActivity extends FragmentActivity {
 		fragment.changeMonth(curYear, curMonth);
 		
 		mMonthTextView.setText(DateUtility.getMonthFormatted(cal.getTime()));
+		resetButtons();
+    }
+    
+    private void resetButtons() {
+        if (HappyEntryLab.get(this).isEntry(true, curMonth, curYear)) {
+            mNextMonthButton.setEnabled(true);
+        } else {
+            mNextMonthButton.setEnabled(false);
+        }
+        
+        if (HappyEntryLab.get(this).isEntry(false, curMonth, curYear)) {
+            mPrevMonthButton.setEnabled(true);
+        } else {
+            mPrevMonthButton.setEnabled(false);
+        }
     }
 }
