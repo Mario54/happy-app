@@ -178,22 +178,11 @@ public class EntryListFragment extends ListFragment {
 
             TextView happyLevelTextView = (TextView) convertView.findViewById(R.id.happyinput_list_item_happyLevel);
             happyLevelTextView.setText(h.getHappiness().toString());
-            happyLevelTextView.setBackgroundColor(getColor(h.getHappiness()));
 
-            TextView tagsTextView = (TextView) convertView.findViewById(R.id.happyinput_list_item_tagsTextView);
-            tagsTextView.setText(h.getTagsList());
+            /*TextView tagsTextView = (TextView) convertView.findViewById(R.id.happyinput_list_item_tagsTextView);
+            tagsTextView.setText((h.getTags().size() == 0) ? getResources().getString(R.string.no_tags) :  h.getTagsList());*/
 
             return convertView;
-        }
-
-        private int getColor(Double happinessLevel) {
-            if (happinessLevel >= 7.0) {
-                return Color.GREEN;
-            } else if (happinessLevel >= 4.0) {
-                return Color.YELLOW;
-            } else {
-                return Color.RED;
-            }
         }
     }
 }
