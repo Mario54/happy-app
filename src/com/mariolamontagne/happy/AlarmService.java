@@ -1,5 +1,7 @@
 package com.mariolamontagne.happy;
 
+import java.io.IOException;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -17,7 +19,12 @@ public class AlarmService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("", "Service startCommand()");
-        alarm.setNextAlarm(this);
+        try {
+            alarm.setNextAlarm(this);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return START_STICKY;
     }
 

@@ -1,5 +1,6 @@
 package com.mariolamontagne.happy.fragments;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -37,7 +38,12 @@ public class RemindersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reminders, container, false);
 
-        mReminders = AlarmUtility.get(getActivity()).getReminders();
+        try {
+            mReminders = AlarmUtility.get(getActivity()).getReminders();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
         mRemindersList = (ListView) view.findViewById(R.id.reminders_listView);
         mRemindersList.setAdapter(new RemindersAdapter(mReminders));
@@ -69,6 +75,11 @@ public class RemindersFragment extends Fragment {
             Collections.sort(mReminders);
             ((ArrayAdapter<Reminder>) mRemindersList.getAdapter()).notifyDataSetChanged();
         }
+    }
+    
+    @Override
+    public void onPause() {
+        // TODO save reminders
     }
     
     private class RemindersAdapter extends ArrayAdapter<Reminder> {

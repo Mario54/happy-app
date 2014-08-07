@@ -1,5 +1,6 @@
 package com.mariolamontagne.happy.utilities;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -7,20 +8,25 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import com.mariolamontagne.happy.model.Reminder;
+import com.mariolamontagne.happy.model.RemindersJSONSerializer;
 
 import android.content.Context;
 
 public class AlarmUtility {
     
-    private ArrayList<Reminder> mReminders = getAlarmTimes();
+    private static final String FILENAME = "reminders.json";
+    private ArrayList<Reminder> mReminders;
+    private RemindersJSONSerializer mSerializer;
     private Context mContext;
     private static AlarmUtility sAlarmUtility;
     
-    private AlarmUtility(Context context) {
+    private AlarmUtility(Context context) throws IOException {
+        mSerializer = new RemindersJSONSerializer(context, FILENAME);
         mContext = context;
+        mReminders = mSerializer.loadReminders();
     }
     
-    public static AlarmUtility get(Context c) {
+    public static AlarmUtility get(Context c) throws IOException {
         if (sAlarmUtility == null) {
             sAlarmUtility = new AlarmUtility(c);
         }

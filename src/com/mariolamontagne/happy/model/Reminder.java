@@ -1,13 +1,23 @@
 package com.mariolamontagne.happy.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Reminder implements Comparable<Reminder> {
     
+    private static final String JSON_HOUR_OF_DAY = "hour";
+    private static final String JSON_MINUTE = "minute";
     private int mHour;
     private int mMinute;
     
     public Reminder(int hour, int minute) {
         mHour = hour;
         mMinute = minute;
+    }
+
+    public Reminder(JSONObject jsonObject) throws JSONException {
+        mHour = jsonObject.getInt(JSON_HOUR_OF_DAY);
+        mMinute = jsonObject.getInt(JSON_MINUTE);
     }
 
     public int getHour() {
@@ -41,6 +51,14 @@ public class Reminder implements Comparable<Reminder> {
         } else {
             return 1;
         }
+    }
+
+    public JSONObject toJSON() throws JSONException {
+        JSONObject object = new JSONObject();
+        object.put(JSON_HOUR_OF_DAY, getHour());
+        object.put(JSON_MINUTE, getMinute());
+        
+        return object;
     }
 
 }

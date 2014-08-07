@@ -1,5 +1,6 @@
 package com.mariolamontagne.happy;
 
+import java.io.IOException;
 import java.util.Date;
 
 import com.mariolamontagne.happy.activities.EditHappyEntryActivity;
@@ -37,12 +38,15 @@ public class AlarmReceiver extends BroadcastReceiver {
             mNotificationManager.notify(1, mBuilder.build());
 
             setNextAlarm(context);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         } finally {
             wl.release();
         }
     }
 
-    public void setNextAlarm(Context context) {
+    public void setNextAlarm(Context context) throws IOException {
         Log.d("", "Service setAlarm()");
         Date alarm = AlarmUtility.get(context).getEarliestAlarm();
 
