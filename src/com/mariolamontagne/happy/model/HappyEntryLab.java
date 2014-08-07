@@ -157,7 +157,7 @@ public class HappyEntryLab {
 	     
 	    if (!after) {
 	        cal.add(Calendar.MONTH, -1);
-	        cal.add(Calendar.DAY_OF_MONTH, -1);
+	        cal.add(Calendar.DAY_OF_MONTH, -1); // will get last day of previous month
 	    }
 	    
 	    for (HappyEntry entry : mEntries) {

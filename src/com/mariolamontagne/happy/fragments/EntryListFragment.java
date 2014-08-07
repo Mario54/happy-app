@@ -65,6 +65,9 @@ public class EntryListFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_entry_list, container, false);
+        
+        TextView titleTextView = (TextView) v.findViewById(R.id.entry_list_title);
+        titleTextView.setText(DateUtility.getDateFormatted(mDay.getDate()));
 
         ListView listView = (ListView) v.findViewById(android.R.id.list);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);

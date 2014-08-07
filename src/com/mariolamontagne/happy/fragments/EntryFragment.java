@@ -74,6 +74,7 @@ public class EntryFragment extends Fragment {
         													DateUtility.getTimeFormatted(mEntry.getTime()));
         
         final TextView happyLevelTextView = (TextView) view.findViewById(R.id.happyentry_levelTextView);
+        happyLevelTextView.setText(String.valueOf(mEntry.getHappiness()));
 
         SeekBar happyLevelSeek = (SeekBar) view.findViewById(R.id.happyentry_LevelSeek);
         happyLevelSeek.setProgress(mEntry.getHappiness().intValue() * 10);
