@@ -8,8 +8,6 @@
     android:paddingRight="16dp"
     android:paddingLeft="16dp"
     android:layout_marginTop="16dp" >
-    
-    
 
     <TextView
         android:id="@+id/happyentry_timeTextView"
@@ -49,8 +47,6 @@
             android:layout_gravity="center_vertical|center_horizontal" />
     </LinearLayout>
 
-    
-    
     <TextView 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,6 +83,5 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="99" >
-
     </ListView>
 </LinearLayout>

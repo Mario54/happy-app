@@ -17,6 +17,13 @@ public class EditRemindersActivity extends SingleFragmentActivity {
     }
     
     @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub
+        super.onPause();
+        startService(new Intent(this, AlarmService.class));
+    }
+    
+    @Override
     protected void onResume() {
         // TODO Auto-generated method stub
         super.onResume();

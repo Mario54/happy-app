@@ -12,9 +12,14 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView.MultiChoiceModeListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -44,6 +49,46 @@ public class RemindersFragment extends Fragment {
         
         mRemindersList = (ListView) view.findViewById(R.id.reminders_listView);
         mRemindersList.setAdapter(new RemindersAdapter(mReminders));
+        mRemindersList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        mRemindersList.setMultiChoiceModeListener(new MultiChoiceModeListener() {
+            
+            @Override
+            public boolean onPrepareActionMode(ActionMode arg0, Menu arg1) {
+                return false;
+            }
+            
+            @Override
+            public void onDestroyActionMode(ActionMode arg0) { }
+            
+            @Override
+            public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
+                MenuInflater inflater = actionMode.getMenuInflater();
+                inflater.inflate(R.menu.reminders_context, menu);
+                
+                return true;
+            }
+            
+            @Override
+            public boolean onActionItemClicked(ActionMode am, MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.menu_item_delete_reminders:
+                        RemindersAdapter adapter = (RemindersAdapter) mRemindersList.getAdapter();
+                        for (int i = adapter.getCount() - 1; i >= 0; i--) {
+                            if (mRemindersList.isItemChecked(i)) {
+                                mReminders.remove(adapter.getItem(i));
+                            }
+                        }
+                        am.finish();
+                        adapter.notifyDataSetChanged();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+            
+            @Override
+            public void onItemCheckedStateChanged(ActionMode mode, int position, long id, boolean checked) { }
+        });
         
         mAddReminderButton = (Button) view.findViewById(R.id.reminders_addButton);
         mAddReminderButton.setOnClickListener(new View.OnClickListener() {
