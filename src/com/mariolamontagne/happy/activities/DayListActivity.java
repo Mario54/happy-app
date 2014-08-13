@@ -1,6 +1,8 @@
 package com.mariolamontagne.happy.activities;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.mariolamontagne.happy.AlarmService;
 import com.mariolamontagne.happy.R;
 import com.mariolamontagne.happy.fragments.DateListFragment;
 import com.mariolamontagne.happy.fragments.EntryFragment;
@@ -41,6 +44,7 @@ public class DayListActivity extends FragmentActivity {
 		curYear = Calendar.getInstance().get(Calendar.YEAR);
 		
 		mMonthTextView = (TextView) findViewById(R.id.monthTextView);
+		mMonthTextView.setText(DateUtility.getMonthFormatted(new GregorianCalendar(curYear, curMonth, 1).getTime()));
 		
 		mPrevMonthButton = (Button) findViewById(R.id.previousMonthButton);
 		mPrevMonthButton.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +74,7 @@ public class DayListActivity extends FragmentActivity {
 		
 		getActionBar().show();
 		resetButtons();
+		startService(new Intent(this, AlarmService.class));
 	}
 	
     @Override

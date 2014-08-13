@@ -4,13 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
-import com.mariolamontagne.happy.R;
-import com.mariolamontagne.happy.model.Reminder;
-import com.mariolamontagne.happy.utilities.AlarmUtility;
-import com.mariolamontagne.happy.utilities.DateUtility;
+import org.json.JSONStringer;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -25,6 +20,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.mariolamontagne.happy.AlarmService;
+import com.mariolamontagne.happy.R;
+import com.mariolamontagne.happy.model.Reminder;
+import com.mariolamontagne.happy.model.RemindersJSONSerializer;
+import com.mariolamontagne.happy.utilities.AlarmUtility;
+import com.mariolamontagne.happy.utilities.DateUtility;
+
 public class RemindersFragment extends Fragment {
     
     protected static final int REQUEST_TIME = 0;
@@ -38,12 +40,7 @@ public class RemindersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reminders, container, false);
 
-        try {
-            mReminders = AlarmUtility.get(getActivity()).getReminders();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        mReminders = AlarmUtility.get(getActivity()).getReminders();
         
         mRemindersList = (ListView) view.findViewById(R.id.reminders_listView);
         mRemindersList.setAdapter(new RemindersAdapter(mReminders));
@@ -79,7 +76,8 @@ public class RemindersFragment extends Fragment {
     
     @Override
     public void onPause() {
-        // TODO save reminders
+        super.onPause();
+        AlarmUtility.get(getActivity()).saveReminders();
     }
     
     private class RemindersAdapter extends ArrayAdapter<Reminder> {

@@ -7,26 +7,35 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.json.JSONException;
+
 import com.mariolamontagne.happy.model.Reminder;
 import com.mariolamontagne.happy.model.RemindersJSONSerializer;
 
 import android.content.Context;
+import android.util.Log;
 
 public class AlarmUtility {
     
     private static final String FILENAME = "reminders.json";
+    private static final String TAG = "AlarmUtility";
     private ArrayList<Reminder> mReminders;
     private RemindersJSONSerializer mSerializer;
     private Context mContext;
     private static AlarmUtility sAlarmUtility;
     
-    private AlarmUtility(Context context) throws IOException {
+    private AlarmUtility(Context context) {
         mSerializer = new RemindersJSONSerializer(context, FILENAME);
         mContext = context;
-        mReminders = mSerializer.loadReminders();
+        try {
+            mReminders = mSerializer.loadReminders();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
     
-    public static AlarmUtility get(Context c) throws IOException {
+    public static AlarmUtility get(Context c) {
         if (sAlarmUtility == null) {
             sAlarmUtility = new AlarmUtility(c);
         }
@@ -35,22 +44,30 @@ public class AlarmUtility {
     }
 
     public ArrayList<Reminder> getReminders() {
+        if (mReminders.isEmpty()) {
+            mReminders.add(new Reminder(9, 0));
+            mReminders.add(new Reminder(13, 0));
+            mReminders.add(new Reminder(15, 0));
+            mReminders.add(new Reminder(17, 0));
+            mReminders.add(new Reminder(19, 0));
+        }
+        
         return mReminders;
     }
-
-    public static ArrayList<Reminder> getAlarmTimes() {
-        ArrayList<Reminder> times = new ArrayList<Reminder>();
-        times.add(new Reminder(9, 0));
-        times.add(new Reminder(13, 0));
-        times.add(new Reminder(15, 0));
-        times.add(new Reminder(17, 0));
-        times.add(new Reminder(19, 0));
-
-        return times;
+    
+    public boolean saveReminders() {
+        try {
+            mSerializer.saveReminders(mReminders);
+            Log.d(TAG, "reminders saved");
+            return true;
+        } catch (Exception e) {
+            Log.d(TAG, "error saving reminders", e);
+            return false;
+        }
     }
 
     public Date getEarliestAlarm() {
-        ArrayList<Reminder> times = getAlarmTimes();
+        ArrayList<Reminder> times = getReminders();
         ArrayList<Date> todaysAlarms = new ArrayList<Date>();
 
         Calendar alarmCal = Calendar.getInstance();
