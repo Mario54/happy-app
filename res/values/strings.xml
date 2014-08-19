@@ -16,6 +16,8 @@
     <string name="title_activity_edit_reminders">Edit Reminders</string>
     <string name="time_picker_title">Reminder Time</string>
     <string name="no_tags">No tags</string>
+    <string name="notification_text">Time for a new entry in Happy!</string>
+    <string name="notification_title">Happy reminder</string>
     
 
 </resources>

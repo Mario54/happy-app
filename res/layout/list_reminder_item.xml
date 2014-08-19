@@ -7,10 +7,7 @@
     
     <TextView 
         android:id="@+id/reminder_item_timeTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
         android:text="10:50 PM"
-        style="@style/list_view_title" />
+        style="@style/ListItemTitle" />
     
-
 </LinearLayout>

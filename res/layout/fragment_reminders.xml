@@ -20,6 +20,7 @@
         android:id="@+id/reminders_addButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add reminder" />
+        android:text="Add reminder"
+        style="@style/ButtonMainStyle" />
 
 </LinearLayout>
