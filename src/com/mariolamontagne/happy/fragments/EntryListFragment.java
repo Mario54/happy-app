@@ -6,7 +6,6 @@ import java.util.Date;
 
 import android.app.ListFragment;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ActionMode;
 import android.view.LayoutInflater;

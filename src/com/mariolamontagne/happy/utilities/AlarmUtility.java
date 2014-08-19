@@ -5,10 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.GregorianCalendar;
-
-import org.json.JSONException;
-
 import com.mariolamontagne.happy.model.Reminder;
 import com.mariolamontagne.happy.model.RemindersJSONSerializer;
 

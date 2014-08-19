@@ -1,7 +1,6 @@
 package com.mariolamontagne.happy.activities;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 import android.app.Fragment;

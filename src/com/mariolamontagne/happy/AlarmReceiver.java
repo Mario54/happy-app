@@ -13,6 +13,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -24,15 +25,19 @@ public class AlarmReceiver extends BroadcastReceiver {
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "");
         try {
+            Resources res = context.getResources();
             wl.acquire();
 
             PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(context,
                     EditHappyEntryActivity.class), PendingIntent.FLAG_ONE_SHOT);
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context)
-                    .setContentTitle("Time to add an entry to Happy!").setContentText("Hello World!")
-                    .setSmallIcon(android.R.drawable.ic_input_add).setContentIntent(contentIntent)
-                    .setDefaults(Notification.DEFAULT_SOUND).setAutoCancel(true);
+                    .setContentTitle(res.getString(R.string.notification_title))
+                    .setContentText(res.getString(R.string.notification_text))
+                    .setSmallIcon(R.drawable.ic_launcher)
+                    .setContentIntent(contentIntent)
+                    .setDefaults(Notification.DEFAULT_SOUND)
+                    .setAutoCancel(true);
             NotificationManager mNotificationManager = (NotificationManager) context
                     .getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManager.notify(1, mBuilder.build());

@@ -1,11 +1,8 @@
 package com.mariolamontagne.happy.fragments;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-
-import org.json.JSONStringer;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -25,10 +22,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.mariolamontagne.happy.AlarmService;
 import com.mariolamontagne.happy.R;
 import com.mariolamontagne.happy.model.Reminder;
-import com.mariolamontagne.happy.model.RemindersJSONSerializer;
 import com.mariolamontagne.happy.utilities.AlarmUtility;
 import com.mariolamontagne.happy.utilities.DateUtility;
 
@@ -106,6 +101,7 @@ public class RemindersFragment extends Fragment {
         return view;
     }
     
+    @SuppressWarnings("unchecked")
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode != Activity.RESULT_OK) return;

@@ -2,20 +2,18 @@
 
 import java.util.Calendar;
 
-import com.mariolamontagne.happy.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
+
+import com.mariolamontagne.happy.R;
 
 public class TimePickerFragment extends DialogFragment {
     
