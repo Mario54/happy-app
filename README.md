@@ -4,4 +4,4 @@ Happy android app
 
 Pictures
 
-![Alt text](http://i.imgur.com/mYcHkR4.png =250x50)
+<img src="http://i.imgur.com/mYcHkR4.png" />
